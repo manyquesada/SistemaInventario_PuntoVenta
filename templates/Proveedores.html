@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- {%block header%} -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- {%block title%} -->
+    <title> Proveedores </title>
+    <!-- {%endblock%} -->
+    <link rel="stylesheet" type="text/css" href="/static/css/table.css">
+    <link rel="shortcut icon" href="/static/images/lista.png" type="image/x-icon">
+    <!-- {%endblock%} -->
+</head>
+
+<body>
+ <!-- {%block content%} -->
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h1>Listado de Proveedores</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Buscar Gerentes...">
+                <img src="/static/images/imgtable/search.png" alt="">
+            </div>
+            <div class="export__file">
+                <a href="/regProv">
+                <img src="/static/images/imgtable/agregar.png"   class="exportagregar">
+                </a>
+               
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id provedor <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Nombre  <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Telefono <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Marca <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Tipo de Producto <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> <img src="/static/images/imgtable/actualizar.png" alt=""> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> <img src="/static/images/imgtable/eliminar.png" alt=""> <span class="icon-arrow">&UpArrow;</span></th>
+
+
+                       
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {%for e in provs%} -->
+                    <tr>
+                        <td><a href="/empresas/{{e.idEmp}}">{{e.IdProve}}</a></td>
+                        <td>{{p.nombre }}</td>
+                        <td>{{p.telefono}}</td>
+                        <td>{{p.marca }}</td>
+                        <td>{{g.direccion}}</td>
+                       
+                        <td>   <p class="status delivered">  <a href="/actualizarProv/{{p.idProv}}">Actualizar</a>   </p> </td>
+                        <td> <p class="status cancelled">     <a href="/eliminarProv/{{p.idProv}}">Eliminar</a>     </p> </td>
+
+                       
+                    <!-- {%endfor%} -->
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    
+    </main>
+    <script src="/static/js/table.js"></script>
+<!-- {%endblock%} -->
+</body>
+</html>
+
+           

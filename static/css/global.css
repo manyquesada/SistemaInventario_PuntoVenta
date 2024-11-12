@@ -1,0 +1,28 @@
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* fonts */
+    --font-poppins: Poppins;
+    
+    /* font sizes */
+    --font-size-lg: 18px;
+    --font-size-11xl: 30px;
+    --font-size-6xl: 25px;
+    --font-size-xl: 20px;
+    
+    /* Colors */
+    --color-gray-100: #7a7575;
+    --color-gray-200: rgba(0, 0, 0, 0);
+    --color-gray-300: rgba(0, 0, 0, 0.72);
+    --color-whitesmoke-100: rgba(241, 239, 239, 0.89);
+    --color-black: #000;
+    --color-lavenderblush-100: rgba(251, 240, 240, 0.88);
+    --color-gainsboro: #d9d9d9;
+    
+}

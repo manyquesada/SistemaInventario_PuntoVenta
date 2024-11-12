@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Proveedor</title>
+    <link rel="stylesheet" href="/static/css/Formulario.css"> 
+    <link rel="stylesheet" href="/static/css/global.css"> 
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Registrar Proveedor</h2>
+            <form action="#" method="post"> 
+                <label for="nombre">Nombre y Apellidos:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" required>
+
+                <label for="producto">Tipo de Producto:</label>
+                <select id="producto" name="producto" required>
+                    <option value="">Seleccionar producto</option>
+                    <option value="producto1">Producto 1</option>
+                    <option value="producto2">Producto 2</option>
+                </select>
+
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+        <div class="image-container">
+
+            <div class="info-text">
+                <br>  <br>
+                Completa toda la información, <br>
+                esto servirá para ingresar al sistema <br>
+                y mostrarlo en el sistema.
+                <br> <br><br>
+            </div>
+            <img src="/static/images/Proveedor.png" alt="Repartidor">
+
+          
+        </div>
+    </div>
+</body>
+</html>
