@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar  Vendedor</title>
+    
+    <title>
+        
+        {%block title%}
+        Actualizar Vendedor
+        {%endblock%}
+    
+    </title>
     <link rel="stylesheet" href="/static/css/Formulario.css"> 
 </head>
 <body>
+    {%block content%}
     <div class="container">
         <div class="form-container">
             <h2>Modificar Vendedor</h2>
-            <form action="#" method="post"> 
+            <form action="/actualizarVendedors/{{vende.IdVende}}" method="post"> 
+                
                 <label for="nombre">Nombre y Apellidos:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input class="controls" name="nombreV" id=""  value="{{vende.nombre}}"  >
 
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
+                <input class="controls"  name="telefonoV" id="" value="{{vende.telefono}}" >
 
                 <div class="fecha-ingreso"> 
                     <label for="fecha">Fecha de Ingreso:</label>
-                    <input type="date" id="fecha" name="fecha" required>
+                    <!--  <input type="date" id="fecha" name="fecha" required> -->
+                    <input type="date" class="controls"  name="fechaV" id=""   value="{{vende.fecha_ingreso}}" >
                 </div>
 
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" name="direccion" required>
+                <label for="direccion">Rol:</label>
+                
+                <input class="controls"  name="RolV" id="" value="{{vende.rol}}" >
 
-                <label for="rol">Rol:</label>
-                <input type="text" id="rol" name="rol" required>
+                <label for="rol">Contraseña:</label>
+                <input class="controls"  name="contrasenaV" id=""     value="{{vende.contrasena}}" >
 
                 
         </div>
@@ -46,5 +57,15 @@
           
         </div>
     </div>
+    {%endblock%}
 </body>
 </html>
+
+
+
+
+
+
+
+    
+    

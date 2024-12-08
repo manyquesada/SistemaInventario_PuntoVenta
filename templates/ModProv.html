@@ -3,32 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar  Proveedor</title>
+    <title>
+        {%block title%}
+        Modificar Provedor
+        {%endblock%}
+        </title>
     <link rel="stylesheet" href="/static/css/Formulario.css"> 
     <link rel="stylesheet" href="/static/css/global.css"> 
 </head>
 <body>
+    {%block content%}
     <div class="container">
         <div class="form-container">
             <h2>Modificar  Proveedor</h2>
-            <form action="#" method="post"> 
+            <form action="/actualizarProv/{{prov.idProv}}" method="post"> 
                 <label for="nombre">Nombre y Apellidos:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input class="controls" name="nombreP" id="" value="{{prov.nombre}}">
 
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
+                <input class="controls"  name="contactoP" id="" value="{{prov.contacto}}">
 
                 <label for="marca">Marca:</label>
-                <input type="text" id="marca" name="marca" required>
+                <input class="controls"  name="marcaP" id="" value="{{prov.marca}}" >
 
                 <label for="producto">Tipo de Producto:</label>
+                <input class="controls"  name="tipoP" id="" value="{{prov.tipoProducto}}" >
+                <!--
                 <select id="producto" name="producto" required>
                     <option value="">Seleccionar producto</option>
                     <option value="producto1">Producto 1</option>
                     <option value="producto2">Producto 2</option>
                 </select>
+                -->
 
-                <button type="submit"> Modificar </button>
+                <button type="submit" value="Actualizar "> Modificar </button>
             </form>
         </div>
         <div class="image-container">
@@ -45,5 +53,11 @@
           
         </div>
     </div>
+    {%endblock%}
 </body>
 </html>
+
+
+
+
+          

@@ -3,30 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Vendedor</title>
+    <title>
+        {%block title%}
+        Registrar Vendedor
+        {%endblock%}
+    </title>
     <link rel="stylesheet" href="/static/css/Formulario.css"> 
 </head>
 <body>
+    {%block content%}
     <div class="container">
         <div class="form-container">
             <h2>Registrar Vendedor</h2>
-            <form action="#" method="post"> 
+            <form action="/guardarVende" method="post"> 
+
                 <label for="nombre">Nombre y Apellidos:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input class="controls" name="nombreV" id="">
 
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
+                <input class="controls"  name="telefonoV" id="">
 
                 <div class="fecha-ingreso"> 
                     <label for="fecha">Fecha de Ingreso:</label>
-                    <input type="date" id="fecha" name="fecha" required>
+                    <input type="date" class="controls"  name="fechaV" id="">
                 </div>
 
                 <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" name="direccion" required>
+                <input class="controls"  name="direccionV" id="">
 
                 <label for="rol">Rol:</label>
-                <input type="text" id="rol" name="rol" required>
+                <input class="controls"  name="RolV" id="" >
+
+                <label for="rol">Contraseña:</label>
+                <input class="controls"  name="contrasenaV" id="" >
 
                 
         </div>
@@ -41,10 +50,17 @@
             </div>
             <img src="/static/images/Vendedor.png" alt="Repartidor">
             <br> <br>
-            <button type="submit">Registrar</button>
+            <button type="submit"  value="Guardar ">Registrar</button>
+            
         
           
         </div>
     </div>
+    {%endblock%}
 </body>
 </html>
+
+
+
+
+

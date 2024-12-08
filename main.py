@@ -42,50 +42,104 @@ def carrito():
 
 
 #--------------------Vendedores
+
 @app.route('/Vendedores')
 def mostrarVendedores():
-    geren=Vendedor()
-    gerens=geren.consultaGeneral()
-    return render_template('Vendedors.html', gerens=gerens) 
-
-@app.route('/actualizarGeren/<int:idGeren>', methods=['post','get'])
-def actGeren(idGeren):
-    gerenMod=Vendedor()
+    vende=Vendedor()
+    vendens=vende.consultaGeneral()
+    return render_template('Vendedors.html', vendens=vendens) 
+     #------------actualizacion de los vendedores 
+@app.route('/actualizarVendedors/<int:idvende>', methods=['post','get'])
+def actVende(idVende):
+    vendeMod=Vendedor()
     if request.method=='POST':
-        gerenMod.idGeren=idGeren
-        gerenMod.nombre=request.form['nombreG']
-        gerenMod.telefono=request.form['telefonoG']
-        gerenMod.correo=request.form['correoG']
-        gerenMod.direccion=request.form['direccionG']
-        gerenMod.area=request.form['areaG']
-        gerenMod.actualizar()
+        vendeMod.idVende=idVende
+        vendeMod.nombre=request.form['nombreV']
+        vendeMod.telefono=request.form['telefonov']
+        vendeMod.fecha_Ingreso=request.form['fechaV']
+        vendeMod.rol=request.form['rolV']
+        vendeMod.contrasena=request.form['contrasenav']
+        vendeMod.actualizar()
         return redirect(url_for('mostrarVendedors'))
-    gerenMod=gerenMod.consultaIndividual(idGeren)
-    return render_template('actVendedors.html', geren=gerenMod)
-
-@app.route('/eliminarGeren/<int:idGeren>', methods=['post','get'])
-def elimGeren(idGeren):
-    gerenE=Vendedor()
-    gerenE=gerenE.consultaIndividual(idGeren)
+    vendeMod=vendeMod.consultaIndividual(idVende)
+    return render_template('ModVendedor.html', vende=vendeMod)
+      ## modulo de eliminar vendedor 
+@app.route('/eliminarVendedors/<int:idvende>', methods=['post','get'])
+def elimVende(idvende):
+    vendeE=Vendedor()
+    vendeEE=vendeE.consultaIndividual(idvende)
     if request.method=='POST':
-        gerenE.eliminar()
+        vendeE.eliminar()
         return redirect(url_for('mostrarVendedors'))
-    return render_template('elimVendedors.html', geren=gerenE)
+    return render_template('ElimVendedor.html', vende=vendeE)
 
-@app.route ('/regGeren')
-def registrarGeren():
-    return render_template('VendedorsNuevo.html')
+### registro de vendedor 
 
-@app.route ('/guardarGeren', methods=['post'])
-def guardarGeren():
-    gerenNvo=Vendedor()
-    gerenNvo.nombre=request.form['nombreG']
-    gerenNvo.telefono=request.form['telefonoG']
-    gerenNvo.correo=request.form['correoG']
-    gerenNvo.direccion=request.form['direccionG']
-    gerenNvo.area=request.form['areaG']
-    gerenNvo.agregar()
+@app.route ('/regVende')
+def registrarVende():
+    return render_template('RegVendedores.html')
+
+@app.route ('/guardarVende', methods=['post'])
+def guardarVende():
+    vendeNvo=Vendedor()
+    vendeNvo.nombre=request.form['nombreV']
+    vendeNvo.telefono=request.form['telefonoV']
+    vendeNvo.fecha_Ingreso=request.form['fechaV']
+    vendeNvo.rol=request.form['rolV']
+    vendeNvo.contrasena=request.form['contrasenaV']
+    vendeNvo.agregar()
     return redirect(url_for('mostrarVendedors'))
+
+
+#### APARTADO DE PROVEEDORES 
+
+#--------------------provedores
+@app.route('/provedores')
+def mostrarProvedores():
+    prov=Provedor()
+    provs=prov.consultaGeneral()
+    return render_template('Proveedores.html', provs=provs) 
+### modificacion de proveedores 
+@app.route('/actualizarProv/<int:idProv>', methods=['post','get'])
+def actProv(idProv):
+    provMod=Provedor()
+    if request.method=='POST':
+        provMod.idProv=idProv
+        provMod.nombre=request.form['nombreP']
+        provMod.contacto=request.form['contactoP']
+        provMod.marca=request.form['marcaP']
+        provMod.tipoProducto=request.form['tipoP']
+        provMod.actualizar()
+        return redirect(url_for('mostrarProvedores'))
+    provMod=provMod.consultaIndividual(idProv)
+    return render_template('ModProv.html', prov=provMod)
+
+
+### eliminacion de proveedores 
+@app.route('/eliminarProv/<int:idProv>', methods=['post','get'])
+def elimProv(idProv):
+    provE=Provedor()
+    provE=provE.consultaIndividual(idProv)
+    if request.method=='POST':
+        provE.eliminar()
+        return redirect(url_for('mostrarProvedores'))
+    return render_template('ElimProv.html', prov=provE)
+
+## Registro de Vendedor 
+
+@app.route ('/regProv')
+def registrarProv():
+    return render_template('RegProv.html')
+
+@app.route ('/guardarProv', methods=['post'])
+def guardarProv():
+    provNvo=Provedor()
+    provNvo.nombre=request.form['nombreP']
+    provNvo.contacto=request.form['contactoP']
+    provNvo.marca=request.form['marcaP']
+    provNvo.tipoProducto=request.form['tipoP']
+    provNvo.agregar()
+    return redirect(url_for('mostrarProvedores'))
 
 
 if __name__ == '__main__':

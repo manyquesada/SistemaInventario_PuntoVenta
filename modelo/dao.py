@@ -12,7 +12,25 @@ class Vendedor(db.Model):
     Telefono=Column(Float)
     Fecha_Ingreso=Column(Date)
     Rol=Column(String)
-    Contraseña=Column(String)
+    Contrasena=Column(String)
+
+    def consultaGeneral(self):
+        return self.query.all()
+
+    def consultaIndividual(self, id):
+        return Vendedor.query.get(id)
+
+    def agregar(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def actualizar(self):
+        db.session.merge(self)
+        db.session.commit()
+
+    def eliminar(self):
+        db.session.delete(self)
+        db.session.commit()
     
 
 
@@ -25,6 +43,24 @@ class Provedor(db.Model):
     ContactoProveedor=Column(Double)
     Marca=Column(String)
     TipoProducto=Column(String)
+
+    def consultaGeneral(self):
+        return self.query.all()
+
+    def consultaIndividual(self, id):
+        return Provedor.query.get(id)
+
+    def agregar(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def actualizar(self):
+        db.session.merge(self)
+        db.session.commit()
+
+    def eliminar(self):
+        db.session.delete(self)
+        db.session.commit()
 
   
 
@@ -54,6 +90,7 @@ class Ventas(db.Model):
     Efectivo=Column(Double)
     Cambio=Column(Double)
     Id_Vendedor=Column(Integer , foreign_key=True)
+
 
 
 

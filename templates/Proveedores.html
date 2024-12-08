@@ -49,19 +49,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- {%for e in provs%} -->
+                 {%for p in provs%} 
                     <tr>
-                        <td><a href="/empresas/{{e.idEmp}}">{{e.IdProve}}</a></td>
+                        <td><a href="/provedores/{{p.idProv}}">{{p.nombre}}</a></td>
                         <td>{{p.nombre }}</td>
                         <td>{{p.telefono}}</td>
                         <td>{{p.marca }}</td>
-                        <td>{{g.direccion}}</td>
+                        <td>{{p.tipo}}</td>
                        
-                        <td>   <p class="status delivered">  <a href="/templates/ModProv.html">Actualizar</a>   </p> </td>
+                        <td>   <p class="status delivered">  <a href="/actualizarProv/{{p.idProv}}">Actualizar</a>   </p> </td>
                         <td> <p class="status cancelled">     <a href="/eliminarProv/{{p.idProv}}">Eliminar</a>     </p> </td>
 
                        
-                    <!-- {%endfor%} -->
+                  {%endfor%} 
                     </tr>
                 </tbody>
             </table>
