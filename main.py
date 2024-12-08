@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request, url_for 
-from modelo.dao import db , Provedor , Productos,Empresas , DetallePedido, Factura,Ventas, Vendedor 
+from modelo.dao import db , Provedor ,  Vendedor 
 import sqlite3
 from datetime import datetime
 app=Flask(__name__)
@@ -36,9 +36,9 @@ def DetalleVenta():
     return render_template('')
 
 
-@app.route('/carrito')
+@app.route('/SistemaCobro')
 def carrito():
-    return render_template('')
+    return render_template('Cobro.html')
 
 
 #--------------------Vendedores

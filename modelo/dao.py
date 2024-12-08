@@ -62,78 +62,9 @@ class Provedor(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-  
-
-###------------------------------------------------------- Parte de Inventario 
-
-class Inventario (db.Model):
-    __tablename__='inventario'
-    CodigoBarras=Column(Integer, primary_key=True)
-    NombreProducto=Column(String)
-    CantidadProducto=Column( String) 
-    Precio_Compra=Column(Double)
-    Precio_Venta=Column(Date)
-    Iva=Column(Double)
-    Categoria=Column(String)
+#
 
 
-
-##-------------------------------------------------------------- Parte de ventas 
-class Ventas(db.Model):
-    __tablename__='ventas'
-    Id_Venta=Column(Integer, primary_key=True)
-    FechaVenta=Column(Date)
-    Hora=Column(Time)
-    TotalVenta=Column(Double)
-    Subtotal=Column(Double)
-    CantProductos=Column(Double)
-    Efectivo=Column(Double)
-    Cambio=Column(Double)
-    Id_Vendedor=Column(Integer , foreign_key=True)
-
-
-
-
-##-------------------------------------------------------------- Parte de DetalleVentas
-class DetalleVentas(db.Model):
-    __tablename__='detalleventa'
-    Id_DetalleVenta=Column(Integer, primary_key=True)
-    CodigoBarras=Column(Integer, foreign_key=True)
-    NombreProducto=Column(String)
-    Cantidad=Column(Double)
-    Precio=Column(Double)
-    subtotal=Column(Double)
-    Iva=Column(Double)
-    Id_Venta=Column(Integer , foreign_key=True)
-
-
-
-
-##-------------------------------------------------------------- Parte de Compras 
-class Compras(db.Model):
-    __tablename__='compras'
-    Id_Compra=Column(Integer, primary_key=True)
-    FechaCompra=Column(Date)
-    TotalCompra=Column(Double)
-    CantidadCompra=Column(Double)
-    Observaciones=Column(String)
-    Id_Proveedor=Column(Integer , foreign_key=True)
-
-   
-    
-
-##-------------------------------------------------------------- Parte de Compras 
-class Detallecompras(db.Model):
-    __tablename__='detallecompras'
-    Id_DetalleCompra=Column(Integer, primary_key=True)
-    NombreProducto=Column(String)
-    CantidadProducto=Column(Double)
-    Precio_Producto=Column(Double)
-    Subtotal=Column(Double)
-    Iva=Column(Double)
-    Id_compra=Column(Integer , foreign_key=True)
-
-   
    
     
   
