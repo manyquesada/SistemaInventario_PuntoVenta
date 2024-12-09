@@ -9,7 +9,7 @@ class Vendedor(db.Model):
     __tablename__='vendedor'
     IdVendedor=Column(Integer, primary_key=True)
     Nombre=Column(String)
-    Telefono=Column(Float)
+    Telefono=Column(Double)
     Fecha_Ingreso=Column(Date)
     Rol=Column(String)
     Contrasena=Column(String)

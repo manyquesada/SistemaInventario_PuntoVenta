@@ -24,7 +24,7 @@
                 <img src="/static/images/imgtable/search.png" alt="">
             </div>
             <div class="export__file">
-                <a href="/templates/RegProv.html">
+                <a href="/regProv">
                 <img src="/static/images/imgtable/agregar.png"   class="exportagregar">
                 </a>
                
@@ -51,14 +51,14 @@
                 <tbody>
                  {%for p in provs%} 
                     <tr>
-                        <td><a href="/provedores/{{p.idProv}}">{{p.nombre}}</a></td>
-                        <td>{{p.nombre }}</td>
-                        <td>{{p.telefono}}</td>
-                        <td>{{p.marca }}</td>
-                        <td>{{p.tipo}}</td>
+                        <td><a href="/provedores/{{p.Id_Proovedor}}">{{p.Id_Proovedor}}</a></td>
+                        <td>{{p.NombreProveedor }}</td>
+                        <td>{{p.ContactoProveedo}}</td>
+                        <td>{{p.Marca }}</td>
+                        <td>{{p.TipoProducto}}</td>
                        
-                        <td>   <p class="status delivered">  <a href="/actualizarProv/{{p.idProv}}">Actualizar</a>   </p> </td>
-                        <td> <p class="status cancelled">     <a href="/eliminarProv/{{p.idProv}}">Eliminar</a>     </p> </td>
+                        <td>   <p class="status delivered">  <a href="/actualizarProv/{{p.Id_Proovedor}}">Actualizar</a>   </p> </td>
+                        <td> <p class="status cancelled">     <a href="/eliminarProv/{{p.Id_Proovedor}}">Eliminar</a>     </p> </td>
 
                        
                   {%endfor%} 

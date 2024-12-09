@@ -16,18 +16,18 @@
     <div class="container">
         <div class="form-container">
             <h2>Modificar  Proveedor</h2>
-            <form action="/actualizarProv/{{prov.idProv}}" method="post"> 
+            <form action="/actualizarProv/{{prov.Id_Proovedor}}" method="post"> 
                 <label for="nombre">Nombre y Apellidos:</label>
-                <input class="controls" name="nombreP" id="" value="{{prov.nombre}}">
+                <input class="controls" name="nombreP" id="" value="{{prov.NombreProveedor}}">
 
                 <label for="telefono">Teléfono:</label>
-                <input class="controls"  name="contactoP" id="" value="{{prov.contacto}}">
+                <input class="controls"  name="contactoP" id="" value="{{prov.ContactoProveedor}}">
 
                 <label for="marca">Marca:</label>
-                <input class="controls"  name="marcaP" id="" value="{{prov.marca}}" >
+                <input class="controls"  name="marcaP" id="" value="{{prov.Marca}}" >
 
                 <label for="producto">Tipo de Producto:</label>
-                <input class="controls"  name="tipoP" id="" value="{{prov.tipoProducto}}" >
+                <input class="controls"  name="tipoP" id="" value="{{prov.TipoProducto}}" >
                 <!--
                 <select id="producto" name="producto" required>
                     <option value="">Seleccionar producto</option>

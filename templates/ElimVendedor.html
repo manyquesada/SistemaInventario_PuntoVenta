@@ -16,25 +16,25 @@
     <div class="container">
         <div class="form-container">
             <h2>Eliminar Vendedor</h2>
-            <form action="/eliminarVendedors/{{vende.IdVende}}" method="post"> 
+            <form action="/eliminarVendedors/{{vende.IdVendedor}}" method="post"> 
                 <label for="nombre">Nombre y Apellidos:</label>
                 <input class="controls" name="nombreV" id=""  value="{{vende.nombre}}"  >
 
                 <label for="telefono">Teléfono:</label>
-                <input class="controls"  name="telefonoV" id="" value="{{vende.telefono}}" >
+                <input class="controls"  name="telefonoV" id="" value="{{vende.Telefono}}" >
 
                 <div class="fecha-ingreso"> 
                     <label for="fecha">Fecha de Ingreso:</label>
                     <!--  <input type="date" id="fecha" name="fecha" required> -->
-                    <input type="date" class="controls"  name="fechaV" id=""   value="{{vende.fecha_ingreso}}" >
+                    <input type="date" class="controls"  name="fechaV" id=""   value="{{vende.Fecha_Ingreso}}" >
                 </div>
 
                 <label for="direccion">Rol:</label>
                 
-                <input class="controls"  name="RolV" id="" value="{{vende.rol}}" >
+                <input class="controls"  name="RolV" id="" value="{{vende.Rol}}" >
 
                 <label for="rol">Contraseña:</label>
-                <input class="controls"  name="contrasenaV" id=""     value="{{vende.contrasena}}" >
+                <input class="controls"  name="contrasenaV" id=""     value="{{vende.Contrasena}}" >
 
                 
         </div>
