@@ -1,0 +1,136 @@
+/* Estilos generales */
+body {
+    font-family: sans-serif;
+    background-color: #e0f2f7; /* Color de fondo azul claro */
+  }
+  
+  .container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Estilos para el encabezado */
+  .header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .header button {
+    background-color: #2196f3; /* Color azul principal */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+  }
+  
+  /* Estilos para la sección de información de la venta */
+  .ventas-info {
+    background-color: #bbdefb; /* Color azul más claro para el fondo */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  .ventas-info div {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la sección de cobro */
+  .cobro-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #bbdefb; /* Color azul más claro para el fondo */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  .cobro-section label,
+  .cobro-section input {
+    margin-bottom: 10px;
+  }
+  
+  .cobro-section input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box; /* Para que el padding y el borde se incluyan en el ancho */
+  }
+  
+  /* Estilos para los botones */
+  .btn {
+    background-color: #4caf50; /* Color verde */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para la tabla */
+  .tabla-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .tabla-section th,
+  .tabla-section td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .tabla-section th {
+    background-color: #2196f3; /* Color azul principal */
+    color: white;
+  }
+  
+  /* Estilos para la sección de totales */
+  .totales-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  .totales-section p {
+    margin: 0 15px;
+  }
+  
+  .total {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Estilos para el indicador */
+  #indicador {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    border-radius: 50%;
+  }
+  
+  .verde {
+    background-color: green;
+  }
+  
+  .rojo {
+    background-color: red;
+  }

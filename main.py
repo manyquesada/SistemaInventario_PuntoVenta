@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, request, url_for 
-from modelo.dao import db , Provedor ,  Vendedor 
+from modelo.dao import db , Provedor ,  Vendedor ,Inventario
 import sqlite3
+from flask import jsonify
 from datetime import datetime
 app=Flask(__name__)
 
@@ -11,15 +12,8 @@ db.init_app(app)
 
 @app.route('/')
 def inicio():
-    return render_template('Vendedores.html')
+    return render_template('login.html')
 
-@app.route('/Vendedores')
-def Vendedores():
-    return render_template('Vendedores.html')
-
-@app.route('/Proveedores')
-def Proveedores():
-    return render_template('Proveedores.html')
 
 @app.route('/Compras')
 def Compras():
@@ -43,22 +37,25 @@ def cobro():
     return render_template('Cobro.html')
 
 
+
+
+
 #--------------------Vendedores
 
-@app.route('/Vendedores')
+
+@app.route('/vendedores')
 def mostrarVendedores():
     vende=Vendedor()
     vendens=vende.consultaGeneral()
-    return render_template('Vendedores.html', vendens=vendens) 
-     #------------actualizacion de los vendedores 
+    return render_template('Vendedores.html', vendens=vendens)
 
-@app.route('/actualizarVendedors/<int:idvende>', methods=['post','get'])
+@app.route('/actualizarVendedors/<int:idVende>', methods=['post','get'])
 def actVende(idVende):
     vendeMod=Vendedor()
     if request.method=='POST':
-        vendeMod.IdVendedor=idVende
-        vendeMod.Nombre=request.form['nombreV']
-        vendeMod.Telefono=request.form['telefonoV']
+        vendeMod.Id_Vendedor=idVende
+        vendeMod.NombreVendedor=request.form['nombreV']
+        vendeMod.TelefonoVendedor=request.form['telefonoV']
         vendeMod.Fecha_Ingreso=request.form['fechaV']
         vendeMod.Rol=request.form['rolV']
         vendeMod.Contrasena=request.form['contrasenaV']
@@ -67,10 +64,10 @@ def actVende(idVende):
     vendeMod=vendeMod.consultaIndividual(idVende)
     return render_template('ModVendedor.html', vende=vendeMod)
       ## modulo de eliminar vendedor 
-@app.route('/eliminarVendedors/<int:idvende>', methods=['post','get'])
-def elimVende(idvende):
+@app.route('/eliminarVendedors/<int:idVende>', methods=['post','get'])
+def elimVende(idVende):
     vendeE=Vendedor()
-    vendeE=vendeE.consultaIndividual(idvende)
+    vendeE=vendeE.consultaIndividual(idVende)
     if request.method=='POST':
         vendeE.eliminar()
         return redirect(url_for('mostrarVendedores'))
@@ -85,8 +82,8 @@ def registrarVende():
 @app.route ('/guardarVende', methods=['post'])
 def guardarVende():
     vendeNvo=Vendedor()
-    vendeNvo.Nombre=request.form['nombreV']
-    vendeNvo.Telefono=request.form['telefonoV']
+    vendeNvo.NombreVendedor=request.form['nombreV']
+    vendeNvo.TelefonoVendedor=request.form['telefonoV']
     vendeNvo.Fecha_Ingreso=request.form['fechaV']
     vendeNvo.Rol=request.form['rolV']
     vendeNvo.Contrasena=request.form['contrasenaV']
@@ -97,7 +94,7 @@ def guardarVende():
 #### APARTADO DE PROVEEDORES 
 
 #--------------------provedores
-@app.route('/provedores')
+@app.route('/Provedores')
 def mostrarProvedores():
     prov=Provedor()
     provs=prov.consultaGeneral()
@@ -109,7 +106,7 @@ def actProv(idProv):
     if request.method=='POST':
         provMod.Id_Proovedor=idProv
         provMod.NombreProveedor=request.form['nombreP']
-        provMod.ContactoProveedor=request.form['contactoP']
+        provMod.TelefonoProveedor=request.form['contactoP']
         provMod.Marca=request.form['marcaP']
         provMod.TipoProducto=request.form['tipoP']
         provMod.actualizar()
@@ -138,13 +135,109 @@ def registrarProv():
 def guardarProv():
     provNvo=Provedor()
     provNvo.NombreProveedor=request.form['nombreP']
-    provNvo.ContactoProveedor=request.form['contactoP']
+    provNvo.TelefonoProveedor=request.form['contactoP']
     provNvo.Marca=request.form['marcaP']
     provNvo.TipoProducto=request.form['tipoP']
     provNvo.agregar()
     return redirect(url_for('mostrarProvedores'))
 
 
+
+#### PARTE DE INVENTARIO 
+
+
+
+#-------------------PRODUCTOS 
+@app.route('/Productos')
+def mostrarProductos():
+    prod=Inventario()
+    prods=prod.consultaGeneral()
+    return render_template('Productos.html', prods=prods) 
+### modificacion de productos
+@app.route('/actualizarProd/<int:idProd>', methods=['post','get'])
+def actProd(idProd):
+    prodMod=Inventario()
+    if request.method=='POST':
+        
+        prodMod.CodigoBarras = idProd
+        prodMod.NombreProducto=request.form['nombreI']
+        prodMod.CantidadProducto=request.form['cantidadI']
+        prodMod.Precio_Compra=request.form['preciocompraI']
+        prodMod.Precio_Venta=request.form['precioVentaI']
+        prodMod.Iva=request.form['ivaI']
+        prodMod.Categoria=request.form['categoriaI']
+        prodMod.actualizar()
+        return redirect(url_for('mostrarProductos'))
+    prodMod=prodMod.consultaIndividual(idProd)
+    return render_template('ModProd.html', prodMod=prodMod)
+
+
+### eliminacion de productos
+@app.route('/eliminarProd/<int:idProd>', methods=['post','get'])
+def elimProd(idProd):
+    prodE=Inventario()
+    prodE=prodE.consultaIndividual(idProd)
+    if request.method=='POST':
+        prodE.eliminar()
+        return redirect(url_for('mostrarProvedores'))
+    return render_template('ElimProd.html', prod=prodE)
+
+## Registro de producto
+
+@app.route ('/regProd')
+def registrarProd():
+    return render_template('RegProd.html')
+
+@app.route ('/guardarProd', methods=['post'])
+def guardarProd():
+    prodNvo=Inventario()
+    prodNvo.CodigoBarras = request.form['codigoBarrasI']
+
+    prodNvo.NombreProducto=request.form['nombreI']
+    prodNvo.CantidadProducto=request.form['cantidadI']
+    prodNvo.Precio_Compra=request.form['preciocompraI']
+    prodNvo.Precio_Venta=request.form['precioVentaI']
+    prodNvo.Iva=request.form['ivaI']
+    prodNvo.Categoria=request.form['categoriaI']
+    prodNvo.agregar()
+    return redirect(url_for('mostrarProductos'))
+
+
+
+
+from flask import jsonify
+
+@app.route('/buscar_producto/<int:codigo_barras>')
+def buscar_producto(codigo_barras):
+    producto = Inventario.query.get(codigo_barras)
+    if producto:
+        return jsonify({
+            'nombre': producto.NombreProducto,
+            'cantidad': producto.CantidadProducto,
+            'precio_compra': producto.Precio_Compra,
+            'precio_venta': producto.Precio_Venta,
+            'iva': producto.Iva,
+          
+        })
+    else:
+        return jsonify({'error': 'Producto no encontrado'})
+
+
+
+
+## PARTE DEL MODAL
+
+@app.route('/generar_ticket', methods=['POST'])
+def generar_ticket():
+  # 1. Recibir los datos de la venta
+  datos_venta = request.get_json()
+
+  # 2. Generar el ticket (puedes usar una plantilla HTML o una librería para generar PDFs)
+  ticket_html = render_template('ticket.html', datos=datos_venta)
+
+  # 3. Devolver el ticket como respuesta
+  return ticket_html
+    
 if __name__ == '__main__':
     app.run(debug=True)
 

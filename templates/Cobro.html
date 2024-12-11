@@ -1,130 +1,128 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Cobro</title>
+    
+    <title>Punto de Venta </title>
     <style>
         body {
             font-family: sans-serif;
         }
-
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 90%; 
+            margin: 0 auto; 
             padding: 20px;
         }
-
         table {
-            width: 100%;
+            width: 100%; 
             border-collapse: collapse;
             margin-bottom: 20px;
         }
-
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
-
         th {
-            background-color: #f0f0f0;
+            background-color: #f2f2f2;
         }
-
-        input[type="text"], input[type="number"] {
-            width: 100%;
+        input[type="text"], button {
             padding: 8px;
-            border: 1px solid #ddd;
-            box-sizing: border-box;
+            margin-bottom: 10px; 
+        }
+        #indicador {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-left: 5px;
+            border-radius: 50%; 
+        }
+        .verde {
+            background-color: green;
+        }
+        .rojo {
+            background-color: red;
         }
 
-        .btn-container {
-            text-align: center;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Responsive design */
-        @media screen and (max-width: 600px) {
-            table {
-                display: block;
-                overflow-x: auto;
-            }
-        }
+       
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Sistema de Cobro</h2>
-
-    <div class="menu">
-        <button>Ventas</button>
-        <button>Reporte</button>
-        <button>Vendedores</button>
-        <button>Proveedores</button>
-        <button>Inventario</button>
+    
+    <div> 
+      <a href="/vendedores">  Vendedor</a>
+        
+        <a href="/Provedores">  Proveedores</a>
+        
+        <a href="/Productos"> Productos</a>
+        
     </div>
 
-    <table>
-        <tr>
-            <td>N° Vendedor</td>
-            <td><input type="text" value="0001" readonly></td>
-            <td>Vendedor</td>
-            <td><input type="text" value="Juana Lopez Gutierrez" readonly></td>
-        </tr>
-    </table>
+    
+
+   
 
     <table>
         <thead>
-        <tr>
-            <th>Código</th>
-            <th>Descripción</th>
-            <th>Cantidad</th>
-            <th>Importe</th>
-            <th>%</th>
-            <th>Total</th>
-        </tr>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio_Compra</th>
+                <th>Precio_Venta</th>
+                <th>IVA</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td><input type="text" value="765294"></td>
-            <td><input type="text" value="Coca Cola 600 ml"></td>
-            <td><input type="number" value="1"></td>
-            <td><input type="number" value="16.38"></td>
-            <td><input type="number" value="262"></td>
-            <td><input type="number" value="19.00" readonly></td>
-        </tr>
-        </tbody>
+        <tbody id="cuerpoTabla"></tbody>
     </table>
+
+    
 
     <table>
         <tr>
-            <td>Código</td>
-            <td><input type="text"></td>
-            <td>Subtotal</td>
-            <td><input type="number" value="16.38" readonly></td>
-            <td></td>
-            <td><strong>19.00</strong></td>
+          
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td>Iva</td>
-            <td><input type="number" value="2.62" readonly></td>
+          <td>
+            <div>
+              <label for="codigo">Código de Barras:</label>
+              <input type="text" id="codigo" onkeyup="buscarProducto()">
+              <span id="indicador"></span> 
+            </div>
+          </td>
+
+          <td>
+            <div>
+              <p>Subtotal: <span id="subtotal">0</span></p>
+              <p>IVA: <span id="iva">0</span></p>
+              <p id="totalVenta">Total: 0</p>
+            </div>
+          </td>
         </tr>
-    </table>
+        <tr>
+          <td>
+            <button onclick="agregarProducto()">Agregar producto</button>
 
-    <div class="btn-container">
-        <button>Cobrar</button>
-    </div>
-</div>
+                    
+                   
+            <button class="btn btn-cobrar" data-toggle="modal" data-target="#modalCobro">Cobrar</button>
+            
+          </td>
+        </tr>
+        <tr>
+          
+        </tr>
+      </table>
 
+
+
+
+      
+    <script src="/static/js/cobro.js"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>

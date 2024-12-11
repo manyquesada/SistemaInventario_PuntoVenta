@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {%block title%}
+    Modificar Prod 
+    {%endblock%}
+    </title>
+  <link rel="stylesheet" href="/static/css/productos.css">
+</head>
+<body>
+  {%block content%}
+  <div class="container">
+    <h1>Modificar Producto</h1>
+    <form class="product-form" action="/actualizarProd/{{prod.CodigoBarras}}"  method="post">
+      <div class="left-section">
+        <div class="form-group">
+          <label for="product-name">Nombre del Producto</label>
+          <input class="text" name="nombreI" value="{{prod.NombreProducto}}" >
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="purchase-price">Precio compra</label>
+            <input class="number" name="preciocompraI" value="{{prod.Precio_Compra}}" >
+          </div>
+          <div class="form-group">
+            <label for="sale-price">Precio venta</label>
+            <input class="number" name="precioVentaI" value="{{prod.Precio_Venta}}" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tax">IVA</label>
+            <input class="number" name="ivaI" value="{{prod.Iva}}" >
+          </div>
+          <div class="form-group">
+            <label for="category">Categoría</label>
+            <input class="text" name="categoriaI" value="{{prod.Categoria}}" >
+          </div>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="form-group">
+          <label for="barcode">Código de barras</label>
+         <input type="text" name="codigoBarrasI" value="{{prod.CodigoBarras}}">
+          <div class="barcode">
+            
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="/static/images/productoddd 1.png" alt="Imagen de producto">
+        </div>
+        <div class="form-group stock-group">
+          <label for="stock">Stock</label>
+          <input class="number" name="cantidadI" value="{{prod.CantidadProducto}}" >
+          <span>unidades</span>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="register-button" value="Registar">Registrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {%endblock%}
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- {%block header%} -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- {%block title%} -->
+    <title> Productos</title>
+    <!-- {%endblock%} -->
+    <link rel="stylesheet" type="text/css" href="/static/css/table.css">
+    <link rel="shortcut icon" href="/static/images/lista.png" type="image/x-icon">
+    <!-- {%endblock%} -->
+</head>
+
+<body>
+ <!-- {%block content%} -->
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h1>Listado de Productos </h1>
+            <div class="input-group">
+                <input type="search" placeholder="Buscar Gerentes...">
+                <img src="/static/images/imgtable/search.png" alt="">
+            </div>
+            <div class="export__file">
+                <a href="/regProd">
+                <img src="/static/images/imgtable/agregar.png"   class="exportagregar">
+                </a>
+               
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Codigo de Barras  <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Nombre   <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Cantidad <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Compra<span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Venta <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Iva <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Categoria <span class="icon-arrow">&UpArrow;</span></th>
+                        
+
+
+                       
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                 {%for p in prods%} 
+                    <tr>
+                        <td><a href="/Productos/{{p.CodigoBarras}}">{{p.CodigoBarras}}</a></td>
+                        <td>{{p.NombreProducto }}</td>
+                        <td>{{p.CantidadProducto}}</td>
+                        <td>{{p.Precio_Compra }}</td>
+                        <td>{{p.Precio_Venta }}</td>
+                        <td>{{p.Iva}}</td>
+                        <td>{{p.Categoria}}</td>
+                       
+                       
+                       
+                  {%endfor%} 
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    
+    </main>
+    <script src="/static/js/table.js"></script>
+<!-- {%endblock%} -->
+</body>
+</html>
+
+           

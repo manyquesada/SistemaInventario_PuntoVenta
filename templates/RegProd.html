@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {%block title%}
+    Registar Producto
+    {%endblock%}
+    </title>
+  <link rel="stylesheet" href="/static/css/productos.css">
+</head>
+<body>
+  {%block content%}
+  <div class="container">
+    <h1>Registrar Producto</h1>
+    <form class="product-form" action="/guardarProd"  method="post">
+      <div class="left-section">
+        <div class="form-group">
+          <label for="product-name">Nombre del Producto</label>
+          <input class="text" name="nombreI" id="" >
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="purchase-price">Precio compra</label>
+            <input class="number" name="preciocompraI" id="" >
+          </div>
+          <div class="form-group">
+            <label for="sale-price">Precio venta</label>
+            <input class="number" name="precioVentaI" id="" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tax">IVA</label>
+            <input class="number" name="ivaI" id="" >
+          </div>
+          <div class="form-group">
+            <label for="category">Categoría</label>
+            <input class="text" name="categoriaI" id="" >
+          </div>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="form-group">
+          <label for="barcode">Código de barras</label>
+         <input type="text" name="codigoBarrasI" id="barcode">
+          <div class="barcode">
+            
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="/static/images/productoddd 1.png" alt="Imagen de producto">
+        </div>
+        <div class="form-group stock-group">
+          <label for="stock">Stock</label>
+          <input class="number" name="cantidadI" id="" >
+          <span>unidades</span>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="register-button" value="Registar">Registrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {%endblock%}
+</body>
+</html>

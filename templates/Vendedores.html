@@ -34,7 +34,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Id provedor <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Id Vendedor <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Nombre  <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Telefono <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Fecha Ingreso  <span class="icon-arrow">&UpArrow;</span></th>
@@ -50,21 +50,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                     {%for v in vendens%} 
-                    <tr>
-                        <td><a href="/Vendedores/{{v.IdVendedor}}">{{v.IdVendedor}}</a></td>
-                        <td>{{v.Nombre }}</td>
-                        <td>{{v.Telefono}}</td>
-                        <td>{{v.FechaIngreso }}</td>
-                        <td>{{v.Rol}}</td>
-                        <td>{{v.Contrasena}}</td>
-                       
-                        <td>   <p class="status delivered">  <a href="/actualizarVendedors/{{v.IdVendedor}}">Actualizar</a>   </p> </td>
-                        <td> <p class="status cancelled">     <a href="/eliminarVendedors/{{v.IdVendedor}}">Eliminar</a>     </p> </td>
-
-                       
-                       {%endfor%} 
-                    </tr>
+                    {% for v in vendens %} 
+                        <tr>
+                            <td><a href="/vendedores/{{v.Id_Vendedor}}">{{v.Id_Vendedor}}</a></td>
+                            <td>{{v.NombreVendedor }}</td>
+                            <td>{{v.TelefonoVendedor}}</td>
+                            <td>{{v.Fecha_Ingreso }}</td>
+                            <td>{{v.Rol}}</td>
+                            <td>{{v.Contrasena}}</td>
+                            <td>   <p class="status delivered">  <a href="/actualizarVendedors/{{v.Id_Vendedor}}">Actualizar</a>   </p> </td>
+                            <td> <p class="status cancelled">     <a href="/eliminarVendedors/{{v.Id_Vendedor}}">Eliminar</a>     </p> </td>
+                        </tr>
+                    {% endfor %} 
                 </tbody>
             </table>
         </section>
