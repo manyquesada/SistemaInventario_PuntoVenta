@@ -95,7 +95,10 @@ class Inventario (db.Model):
         db.session.delete(self)
         db.session.commit()
 
-   
+
+ # Asegúrate de importar tu modelo de Inventario
+
+
     
   
 

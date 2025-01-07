@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Cobro</title>
-    <link rel="stylesheet" href="/static/css/cobro.css">
+    <title>Cobro</title>
+    <link rel="stylesheet" href="/static/css/cobro.css"> 
     <style>
-        body {
+            body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
@@ -220,23 +220,62 @@
     gap: 15px; /* Espacio entre los botones */
 }
 
+
+
+
+        /* Estilos para el modal */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; 
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <!-- Menú principal -->
-    <div class="header">
+   
+     <div class="header">
         <div class="logo">Sistema de Cobro</div>
         <nav>
             <a href="#ventas" class="active">Ventas</a>
-            <a href="#reporte">Reporte</a>
-            <a href="#vendedores">Vendedores</a>
-            <a href="#proveedores">Proveedores</a>
-            <a href="#inventario">Inventario</a>
+            <a href="/vendedores">  Vendedor</a>
+            <a href="/Provedores">  Proveedores</a>
+            <a href="/Productos"> Productos</a>
         </nav>
     </div>
 
     <div class="main">
-        <!-- Contenido principal -->
+
+
         <div class="info">
             <div>
                 <strong>N° Vendedor</strong>
@@ -247,52 +286,61 @@
                 <span>Juana López Gutiérrez</span>
             </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Descripción</th>
-                    <th>Cantidad</th>
-                    <th>Importe</th>
-                    <th>IVA</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>012224</td>
-                    <td>Coca Cola 600 ml</td>
-                    <td>1</td>
-                    <td>16.38</td>
-                    <td>2.62</td>
-                    <td>19.00</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="footer">
-            <div class="input-group">
-                <label for="codigo">Código</label>
-                <input type="text" id="codigo">
-                <div class="btn-group">
-                    <button class="btn-add">Agregar Producto</button>
-                    <button class="btn-pay">Cobrar</button>
-                </div>
+
+    <table id="tabla-productos">
+        <thead>
+            <tr>
+                <th>Código de Barras</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <div class="input-group">
+            <label for="codigoBarras">Código de Barras:</label>
+            <input type="text" id="codigoBarras" name="codigoBarras" autofocus> 
+            <div class="btn-group">
+                <button class="btn-add" type="button" onclick="agregarProducto()">Agregar Producto</button>
+                <button class="btn-pay" id="abrirModal">Cobrar</button> 
             </div>
-            <div class="totals">
-                <div>
-                    <strong>Subtotal</strong>
-                    <span>16.38</span>
-                </div>
-                <div>
-                    <strong>IVA</strong>
-                    <span>2.62</span>
-                </div>
-                <div>
-                    <strong>Total</strong>
-                    <span>19.00</span>
-                </div>
+        </div>
+        <div class="totals">
+            <div>
+                <strong>Subtotal</strong>
+                <span id="subtotal">0</span>
+            </div>
+            <div>
+                <strong>IVA</strong>
+                <span id="iva">0</span>
+            </div>
+            <div>
+                <strong>Total</strong>
+                <span id="total">0</span>
             </div>
         </div>
     </div>
+    </div>
+
+    <div id="modalCobro" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2>Cobro</h2>
+            <form id="formularioCompra" action="/guardar_compra" method="POST">
+                <input type="hidden" id="datosCompra" name="datosCompra">
+                <label for="cantidadRecibida">Cantidad Recibida:</label>
+                <input type="number" id="cantidadRecibida" name="cantidadRecibida">
+                <button type="button" onclick="calcularCambio()">Calcular Cambio</button>
+                <div id="mensajeCambio"></div>
+                <button type="submit">Confirmar Compra</button> </form>
+        </div>
+    </div>
+
+    <script src="/static/js/cobro.js"></script>
 </body>
 </html>

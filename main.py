@@ -1,12 +1,16 @@
-from flask import Flask, redirect, render_template, request, url_for 
+from flask import Flask, redirect, render_template, request, url_for ,jsonify
 from modelo.dao import db , Provedor ,  Vendedor ,Inventario
 import sqlite3
 from flask import jsonify
+import json
 from datetime import datetime
 app=Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost/ventas'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+
+
+
 
 db.init_app(app)
 
@@ -207,8 +211,32 @@ def guardarProd():
     return redirect(url_for('mostrarProductos'))
 
 
+@app.route('/agregar_producto_cobro', methods=['POST'])
+def agregar_producto_cobro():
+    codigoBarras = request.form['codigoBarras']
+    producto = Inventario.query.filter_by(CodigoBarras=codigoBarras).first()
+    if producto:
+        return jsonify({
+            'codigoBarras': producto.CodigoBarras,
+            'nombre': producto.NombreProducto,
+            'precio': producto.Precio_Venta
+        })
+    else:
+        return jsonify({'error': 'Producto no encontrado'}), 404
+    
 
 
+@app.route('/guardar_compra', methods=['POST'])
+def guardar_compra():
+    datosCompra = request.form['datosCompra']
+    # Convertir datosCompra de JSON a una lista de diccionarios
+    datosCompra = json.loads(datosCompra)
+
+    # Procesar los datos de la compra (guardar en la base de datos, etc.)
+    # ...
+
+    # Pasar los datos de la compra a la plantilla de resumen
+    return render_template('resumencompra.html', datosCompra=datosCompra)
     
 if __name__ == '__main__':
     app.run(debug=True)

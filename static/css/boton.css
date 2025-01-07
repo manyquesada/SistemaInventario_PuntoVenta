@@ -1,0 +1,33 @@
+        /* Estilo para los botones en el footer */
+        .btn-group button {
+            padding: 12px 20px;
+            margin-right: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-inicio {
+            background-color: #2874a7; /* Verde */
+            color: #ffffff;
+        }
+        
+        .btn-inicio:hover {
+            background-color: #0f4061; /* Verde más oscuro */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contenedor-boton { 
+            position: relative; 
+          }
+          
+          .btn-group button {
+            /* ... tus estilos existentes ... */
+            position: absolute;
+            top: 20px; /* Ajusta según tu necesidad */
+            left: 20px; /* Ajusta según tu necesidad */
+          }
