@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        {%block title%}
-        Eliminar  Vendedor
-        {%endblock%}
-
-    </title>
-    <link rel="stylesheet" href="/static/css/Formulario.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block title %}
+    Eliminar Vendedor
+    {% endblock %}
+  </title>
+  <link rel="stylesheet" href="/static/css/Formulario.css">
 </head>
 <body>
-    {%block content%}
-    <div class="container">
-        <div class="form-container">
-            <h2>Eliminar Vendedor</h2>
-            <form action="/eliminarVendedors/{{vende.Id_Vendedor}}" method="post"> 
-                <label for="nombre">Nombre y Apellidos:</label>
-                <input class="controls" name="nombreV" id=""  value="{{vende.NombreVendedor}}"  >
+  {% block content %}
+  <div class="container">
+    <div class="form-container">
+      <h2>Eliminar Vendedor</h2>
 
-                <label for="telefono">Teléfono:</label>
-                <input class="controls"  name="telefonoV" id="" value="{{vende.TelefonoVendedor}}" >
+      <form action="/eliminarVendedors/{{vende.Id_Vendedor}}" method="post" id="eliminarVendedorForm"> 
+        <label for="nombre">Nombre y Apellidos:</label>
+        <input class="controls" name="nombreV" id="" value="{{vende.NombreVendedor}}">
 
-                <div class="fecha-ingreso"> 
-                    <label for="fecha">Fecha de Ingreso:</label>
-                    <!--  <input type="date" id="fecha" name="fecha" required> -->
-                    <input type="date" class="controls"  name="fechaV" id=""   value="{{vende.Fecha_Ingreso}}" >
-                </div>
+        <label for="telefono">Teléfono:</label>
+        <input class="controls" name="telefonoV" id="" value="{{vende.TelefonoVendedor}}">
 
-                <label for="direccion">Rol:</label>
-                
-                <input class="controls"  name="RolV" id="" value="{{vende.Rol}}" >
-
-                <label for="rol">Contraseña:</label>
-                <input class="controls"  name="contrasenaV" id=""     value="{{vende.Contrasena}}" >
-
-                
+        <div class="fecha-ingreso">
+          <label for="fecha">Fecha de Ingreso:</label>
+          <input type="date" class="controls" name="fechaV" id="" value="{{vende.Fecha_Ingreso}}">
         </div>
-        <div class="image-container">
 
-            <div class="info-text">
-                <br>  <br>
-                Verifica bien y asegurarte de estar  <br>
-               seguro de eliminar   , esto serviría <br>
-               para quitar el vendedor . 
-                <br> <br><br>
-            </div>
-            <img src="/static/images/Vendedor.png" alt="Repartidor">
-            <br> <br>
-            <button class="ButtonEliminar " type="submit"> Eliminar  </button>
-        
-          
-        </div>
+        <label for="direccion">Rol:</label>
+
+        <input class="controls" name="RolV" id="" value="{{vende.Rol}}">
+
+        <label for="rol">Contraseña:</label>
+        <input class="controls" name="contrasenaV" id="" value="{{vende.Contrasena}}">
+
+      </form>
     </div>
+    <div class="image-container">
+
+      <div class="info-text">
+        <br> <br>
+        Verifica bien y asegurarte de estar <br>
+        seguro de eliminar , esto serviría <br>
+        para quitar el vendedor .
+        <br> <br><br>
+      </div>
+      <img src="/static/images/Vendedor.png" alt="Repartidor">
+      <br> <br>
+      <button class="ButtonEliminar" type="button" onclick="document.getElementById('eliminarVendedorForm').submit()"> Eliminar  </button>
+    </div>
+    
+  </div>
+  {% endblock %}
 </body>
 </html>

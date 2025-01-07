@@ -1,63 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>
-        
-        {%block title%}
-        Actualizar Vendedor
-        {%endblock%}
-    
-    </title>
-    <link rel="stylesheet" href="/static/css/Formulario.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block title %}
+    Modificar Vendedor
+    {% endblock %}
+  </title>
+  <link rel="stylesheet" href="/static/css/Formulario.css">
 </head>
 <body>
-    {%block content%}
-    <div class="container">
-        <div class="form-container">
-            <h2>Modificar Vendedor</h2>
-            <form action="/actualizarVendedors/{{vende.vendedores}}" method="post"> 
-                
-                <label for="nombre">Nombre y Apellidos:</label>
-                <input class="controls" name="nombreV" id=""  value="{{vende.NombreVendedor}}"  >
+  {% block content %}
+  <div class="container">
+    <div class="form-container">
+      <h2>Modificar Vendedor</h2>
 
-                <label for="telefono">Teléfono:</label>
-                <input class="controls"  name="telefonoV" id="" value="{{vende.TelefonoVendedor}}" >
+      <form action="/actualizarVendedors/{{vende.Id_Vendedor}}" method="post" id="modificarVendedorForm"> 
+        <label for="nombre">Nombre y Apellidos:</label>
+        <input class="controls" name="nombreV" id="" value="{{vende.NombreVendedor}}">
 
-                <div class="fecha-ingreso"> 
-                    <label for="fecha">Fecha de Ingreso:</label>
-                    <!--  <input type="date" id="fecha" name="fecha" required> -->
-                    <input type="date" class="controls"  name="fechaV" id=""   value="{{vende.Fecha_ingreso}}" >
-                </div>
+        <label for="telefono">Teléfono:</label>
+        <input class="controls" name="telefonoV" id="" value="{{vende.TelefonoVendedor}}">
 
-                <label for="direccion">Rol:</label>
-                
-                <input class="controls"  name="rolV" id="" value="{{vende.Rol}}" >
-
-                <label for="rol">Contraseña:</label>
-                <input class="controls"  name="contrasenaV" id=""     value="{{vende.Contrasena}}" >
-
-                
+        <div class="fecha-ingreso">
+          <label for="fecha">Fecha de Ingreso:</label>
+          <input type="date" class="controls" name="fechaV" id="" value="{{vende.Fecha_Ingreso}}">
         </div>
-        <div class="image-container">
 
-            <div class="info-text">
-                <br>  <br>
-                Asegurate de verificar bien la <br>
-                información a modificar  , esto serviría <br>
-                para mostrar bien la informacion . <br>
-                <br> <br><br>
-            </div>
-            <img src="/static/images/Vendedor.png" alt="Repartidor">
-            <br> <br>
-            <button type="submit">Modificar </button>
-        
-          
-        </div>
+        <label for="direccion">Rol:</label>
+
+        <input class="controls" name="rolV" id="" value="{{vende.Rol}}">
+
+        <label for="rol">Contraseña:</label>
+        <input class="controls" name="contrasenaV" id="" value="{{vende.Contrasena}}">
+      </form>
     </div>
-    {%endblock%}
+    <div class="image-container">
+
+      <div class="info-text">
+        <br> <br>
+        Verifica bien y asegúrate de estar <br>
+        seguro de modificar la información, <br>
+        esto serviría para actualizar los datos <br>
+        del vendedor.
+        <br> <br><br>
+      </div>
+      <img src="/static/images/Vendedor.png" alt="Repartidor">
+      <br> <br>
+      <button class="ButtonModificar" type="button" onclick="document.getElementById('modificarVendedorForm').submit()"> Modificar </button>
+    </div>
+    
+  </div>
+  {% endblock %}
 </body>
 </html>
 

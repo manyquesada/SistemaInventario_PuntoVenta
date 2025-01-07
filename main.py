@@ -40,7 +40,7 @@ def cobro():
 
 
 
-#--------------------Vendedores
+#-------------------------------------------------------------------Vendedores
 
 
 @app.route('/vendedores')
@@ -63,6 +63,7 @@ def actVende(idVende):
         return redirect(url_for('mostrarVendedores'))
     vendeMod=vendeMod.consultaIndividual(idVende)
     return render_template('ModVendedor.html', vende=vendeMod)
+
       ## modulo de eliminar vendedor 
 @app.route('/eliminarVendedors/<int:idVende>', methods=['post','get'])
 def elimVende(idVende):
@@ -125,7 +126,11 @@ def elimProv(idProv):
         return redirect(url_for('mostrarProvedores'))
     return render_template('ElimProv.html', prov=provE)
 
-## Registro de Vendedor 
+
+
+
+
+## Registro de proovedor 
 
 @app.route ('/regProv')
 def registrarProv():
@@ -192,7 +197,6 @@ def registrarProd():
 def guardarProd():
     prodNvo=Inventario()
     prodNvo.CodigoBarras = request.form['codigoBarrasI']
-
     prodNvo.NombreProducto=request.form['nombreI']
     prodNvo.CantidadProducto=request.form['cantidadI']
     prodNvo.Precio_Compra=request.form['preciocompraI']
@@ -205,38 +209,6 @@ def guardarProd():
 
 
 
-from flask import jsonify
-
-@app.route('/buscar_producto/<int:codigo_barras>')
-def buscar_producto(codigo_barras):
-    producto = Inventario.query.get(codigo_barras)
-    if producto:
-        return jsonify({
-            'nombre': producto.NombreProducto,
-            'cantidad': producto.CantidadProducto,
-            'precio_compra': producto.Precio_Compra,
-            'precio_venta': producto.Precio_Venta,
-            'iva': producto.Iva,
-          
-        })
-    else:
-        return jsonify({'error': 'Producto no encontrado'})
-
-
-
-
-## PARTE DEL MODAL
-
-@app.route('/generar_ticket', methods=['POST'])
-def generar_ticket():
-  # 1. Recibir los datos de la venta
-  datos_venta = request.get_json()
-
-  # 2. Generar el ticket (puedes usar una plantilla HTML o una librería para generar PDFs)
-  ticket_html = render_template('ticket.html', datos=datos_venta)
-
-  # 3. Devolver el ticket como respuesta
-  return ticket_html
     
 if __name__ == '__main__':
     app.run(debug=True)

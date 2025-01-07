@@ -1,136 +1,190 @@
-/* Estilos generales */
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: sans-serif;
-    background-color: #e0f2f7; /* Color de fondo azul claro */
-  }
-  
-  .container {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Estilos para el encabezado */
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+
+
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 10px;
+  background-color: #007bff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header button {
+  background-color: #ffffff;
+  color: #007bff;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header button:hover {
+  background-color: #0056b3;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+/* Main Section */
+.main {
+  margin: 30px auto;
+  max-width: 1100px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Vendor Information */
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #17a2b8;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.info div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+thead {
+  background-color: #f8f9fa;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  color: #007bff;
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+tbody td {
+  font-size: 15px;
+  color: #555;
+}
+
+tfoot td {
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #e9ecef;
+}
+
+/* Footer Section */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #17a2b8;
+  color: #ffffff;
+  font-weight: bold;
+  border-top: 2px solid #e9ecef;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 20px;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.input-group input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  font-size: 14px;
+  color: #333;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  box-shadow: inset 0px 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 16px;
+}
+
+.totals div {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.totals span {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #f8f9fa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .header {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
+      flex-wrap: wrap;
   }
-  
-  .header button {
-    background-color: #2196f3; /* Color azul principal */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px; /* Bordes ligeramente redondeados */
+
+  .info {
+      flex-direction: column;
+      text-align: center;
   }
-  
-  /* Estilos para la sección de información de la venta */
-  .ventas-info {
-    background-color: #bbdefb; /* Color azul más claro para el fondo */
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+
+  .footer {
+      flex-direction: column;
+      text-align: center;
   }
-  
-  .ventas-info div {
-    margin-bottom: 10px;
+
+  .totals {
+      align-items: center;
   }
-  
-  /* Estilos para la sección de cobro */
-  .cobro-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #bbdefb; /* Color azul más claro para el fondo */
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  }
-  
-  .cobro-section label,
-  .cobro-section input {
-    margin-bottom: 10px;
-  }
-  
-  .cobro-section input[type="text"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box; /* Para que el padding y el borde se incluyan en el ancho */
-  }
-  
-  /* Estilos para los botones */
-  .btn {
-    background-color: #4caf50; /* Color verde */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  /* Estilos para la tabla */
-  .tabla-section table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .tabla-section th,
-  .tabla-section td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .tabla-section th {
-    background-color: #2196f3; /* Color azul principal */
-    color: white;
-  }
-  
-  /* Estilos para la sección de totales */
-  .totales-section {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-    font-size: 18px;
-  }
-  
-  .totales-section p {
-    margin: 0 15px;
-  }
-  
-  .total {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  /* Estilos para el indicador */
-  #indicador {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-left: 5px;
-    border-radius: 50%;
-  }
-  
-  .verde {
-    background-color: green;
-  }
-  
-  .rojo {
-    background-color: red;
-  }
+}

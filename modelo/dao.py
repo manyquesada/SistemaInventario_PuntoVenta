@@ -9,7 +9,7 @@ class Vendedor(db.Model):
     __tablename__='vendedor'
     Id_Vendedor=Column(Integer, primary_key=True)
     NombreVendedor=Column(String)
-    TelefonoVendedor=Column(Double)
+    TelefonoVendedor=Column(String)
     Fecha_Ingreso=Column(Date)
     Rol=Column(String)
     Contrasena=Column(String)
@@ -40,7 +40,7 @@ class Provedor(db.Model):
     __tablename__='proveedor'
     Id_Proovedor=Column(Integer, primary_key=True)
     NombreProveedor=Column(String)
-    TelefonoProveedor=Column(Double)
+    TelefonoProveedor=Column(String)
     Marca=Column(String)
     TipoProducto=Column(String)
 
@@ -62,17 +62,18 @@ class Provedor(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-#
+#----------------------------------------------------------
 
 ### Parte Inventario 
 class Inventario (db.Model):
     __tablename__='inventario'
-    CodigoBarras=Column(Integer, primary_key=True)
+    Id_Producto=Column(Integer, primary_key=True)
+    CodigoBarras=Column(String)
     NombreProducto=Column(String)
-    CantidadProducto=Column( String) 
-    Precio_Compra=Column(Double)
-    Precio_Venta=Column(Date)
-    Iva=Column(Double)
+    CantidadProducto=Column(Float) 
+    Precio_Compra=Column(Float)
+    Precio_Venta=Column(Float)
+    Iva=Column(Float)
     Categoria=Column(String)
 
 

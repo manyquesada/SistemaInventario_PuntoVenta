@@ -1,128 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Punto de Venta </title>
+    <title>Sistema de Cobro</title>
+    <link rel="stylesheet" href="/static/css/cobro.css">
     <style>
         body {
-            font-family: sans-serif;
-        }
-        .container {
-            max-width: 90%; 
-            margin: 0 auto; 
-            padding: 20px;
-        }
-        table {
-            width: 100%; 
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        input[type="text"], button {
-            padding: 8px;
-            margin-bottom: 10px; 
-        }
-        #indicador {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            margin-left: 5px;
-            border-radius: 50%; 
-        }
-        .verde {
-            background-color: green;
-        }
-        .rojo {
-            background-color: red;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
         }
 
-       
+        /* Estilos del encabezado */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #007bff;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header a:hover {
+            color: #ffffff;
+            background-color: #007bff;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        .header a.active {
+            background-color: #0056b3;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Efecto de subrayado animado */
+        .header a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: #0056b3;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .header a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .header a.active::after {
+            width: 100%;
+            left: 0;
+            background-color: #003f7f;
+        }
+
+        /* Menú desplegable opcional */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #007bff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Fondo animado en hover */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(0, 123, 255, 0.2), rgba(0, 123, 255, 0));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .header:hover::before {
+            opacity: 1;
+        }
+
+        /* Responsividad para dispositivos móviles */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header nav {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                align-items: flex-start;
+            }
+
+            .header a {
+                width: 100%;
+                text-align: left;
+            }
+        }
+
+
+
+        /* Estilo para los botones en el footer */
+.btn-group button {
+    padding: 12px 20px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-add {
+    background-color: #28a745; /* Verde */
+    color: #ffffff;
+}
+
+.btn-add:hover {
+    background-color: #218838; /* Verde más oscuro */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-pay {
+    background-color: #ffc107; /* Amarillo */
+    color: #333;
+}
+
+.btn-pay:hover {
+    background-color: #e0a800; /* Amarillo más oscuro */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Espaciado adicional entre el campo de entrada y los botones */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px;
+    gap: 15px; /* Añade un espacio entre el input y los botones */
+}
+
+.input-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    font-size: 14px;
+    color: #333;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Estilo de botones dentro del grupo */
+.btn-group {
+    display: flex;
+    gap: 15px; /* Espacio entre los botones */
+}
+
     </style>
 </head>
 <body>
-
-    
-    <div> 
-      <a href="/vendedores">  Vendedor</a>
-        
-        <a href="/Provedores">  Proveedores</a>
-        
-        <a href="/Productos"> Productos</a>
-        
+    <!-- Menú principal -->
+    <div class="header">
+        <div class="logo">Sistema de Cobro</div>
+        <nav>
+            <a href="#ventas" class="active">Ventas</a>
+            <a href="#reporte">Reporte</a>
+            <a href="#vendedores">Vendedores</a>
+            <a href="#proveedores">Proveedores</a>
+            <a href="#inventario">Inventario</a>
+        </nav>
     </div>
 
-    
-
-   
-
-    <table>
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Descripción</th>
-                <th>Cantidad</th>
-                <th>Precio_Compra</th>
-                <th>Precio_Venta</th>
-                <th>IVA</th>
-                <th>Total</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="cuerpoTabla"></tbody>
-    </table>
-
-    
-
-    <table>
-        <tr>
-          
-        </tr>
-        <tr>
-          <td>
+    <div class="main">
+        <!-- Contenido principal -->
+        <div class="info">
             <div>
-              <label for="codigo">Código de Barras:</label>
-              <input type="text" id="codigo" onkeyup="buscarProducto()">
-              <span id="indicador"></span> 
+                <strong>N° Vendedor</strong>
+                <span>0001</span>
             </div>
-          </td>
-
-          <td>
             <div>
-              <p>Subtotal: <span id="subtotal">0</span></p>
-              <p>IVA: <span id="iva">0</span></p>
-              <p id="totalVenta">Total: 0</p>
+                <strong>Vendedor</strong>
+                <span>Juana López Gutiérrez</span>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button onclick="agregarProducto()">Agregar producto</button>
-
-                    
-                   
-            <button class="btn btn-cobrar" data-toggle="modal" data-target="#modalCobro">Cobrar</button>
-            
-          </td>
-        </tr>
-        <tr>
-          
-        </tr>
-      </table>
-
-
-
-
-      
-    <script src="/static/js/cobro.js"></script>
-    <script src="/static/js/main.js"></script>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Importe</th>
+                    <th>IVA</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>012224</td>
+                    <td>Coca Cola 600 ml</td>
+                    <td>1</td>
+                    <td>16.38</td>
+                    <td>2.62</td>
+                    <td>19.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer">
+            <div class="input-group">
+                <label for="codigo">Código</label>
+                <input type="text" id="codigo">
+                <div class="btn-group">
+                    <button class="btn-add">Agregar Producto</button>
+                    <button class="btn-pay">Cobrar</button>
+                </div>
+            </div>
+            <div class="totals">
+                <div>
+                    <strong>Subtotal</strong>
+                    <span>16.38</span>
+                </div>
+                <div>
+                    <strong>IVA</strong>
+                    <span>2.62</span>
+                </div>
+                <div>
+                    <strong>Total</strong>
+                    <span>19.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
