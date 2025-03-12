@@ -8,9 +8,15 @@
     {%endblock%}
     </title>
   <link rel="stylesheet" href="/static/css/productos.css">
+  <link rel="stylesheet" href="/static/css/boton.css"> 
 </head>
 <body>
   {%block content%}
+  <div class="btn-group">
+    <a href="/cobro" role="button"> 
+      <button class="btn-inicio">Inicio</button>
+    </a>
+  </div>
   <div class="container">
     <h1>Registrar Producto</h1>
     <form class="product-form" action="/guardarProd"  method="post">

@@ -1,0 +1,32 @@
+/* Estilo para los botones */
+.btn-group button {
+  padding: 5px 10px; /* Padding reducido */
+  font-size: 13px;
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  font-weight: bold;
+  border: none;
+  border-radius: 15px; /* Menos redondeado */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-inicio {
+  background-color: #2874a7; 
+  color: #ffffff;
+}
+
+.btn-inicio:hover {
+  background-color: #0f4061; 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contenedor-boton { 
+  position: relative; 
+}
+
+.btn-group button {
+  position: absolute;
+  top: 20px; 
+  left: 20px; 
+}
